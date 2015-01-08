@@ -1,4 +1,4 @@
-app.controller('RegisterController',function($scope, townsData){
+app.controller('RegisterController',function($scope, townsData, userData){
     $scope.pageTitle = 'Register';
     townsData.getTowns()
         .$promise
@@ -7,6 +7,7 @@ app.controller('RegisterController',function($scope, townsData){
             //console.log(data);
         })
     $scope.register = function(user){
-        console.log(user);
+        //console.log(user);
+        userData.register(user);
     }
 });
