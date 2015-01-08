@@ -7,4 +7,4 @@ app.factory('townsData', ['$resource', 'baseServiceUrl', function($resource,base
     return{
         getTowns: getAllTowns
     }
-}])
+}]);
