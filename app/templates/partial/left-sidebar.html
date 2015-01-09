@@ -11,7 +11,7 @@
 <!-- Login / register box for anonymous site visitors -->
 <div class="box" ng-if="authService.isAnonymous()">
     <p>To publish a new ad, please login.</p>
-    <!-- TODO: add “Login” button -->
+    <a href="#/login" class="button">Login</a>
     <a href="#/register" class="button">Register</a>
 </div>
 
@@ -21,7 +21,7 @@
     <ul class="sidebar-menu">
         <li><a href="#/">Home</a></li>
         <li><a href="#/user/ads">My Ads</a></li>
-        <!-- TODO: add “Publish New Ad” link -->
+        <li><a href="#/user/ads/publish">My Ads</a></li>
         <!-- TODO: add “Edit Profile” link -->
         <li><a ng-click="logout()">Logout</a></li>
     </ul>
