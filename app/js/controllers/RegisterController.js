@@ -1,13 +1,22 @@
-app.controller('RegisterController',function($scope, townsData, userData){
-    $scope.pageTitle = 'Register';
-    townsData.getTowns()
-        .$promise
-        .then(function(data){
-            $scope.towns = data;
-            //console.log(data);
-        })
-    $scope.register = function(user){
-        //console.log(user);
-        userData.register(user);
+'use strict';
+
+app.controller('RegisterController',
+    function ($scope, $location, townsService, authService, notifyService) {
+        $scope.userData = {townId: null};
+        $scope.towns = townsService.getTowns();
+
+        $scope.register = function(userData) {
+            authService.register(userData,
+                function success() {
+                    notifyService.showInfo('Registration successful');
+                    $location.path('/');
+                },
+                function error(err) {
+                    notifyService.showError("User registration failed", err);
+                }
+            );
+        };
     }
-});
+);
+
+
