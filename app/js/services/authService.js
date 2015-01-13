@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('authService',
-    function ($http, baseServiceUrl) {
+    function ($http, $location,  baseServiceUrl) {
         return {
             login: function(userData, success, error) {
                 var request = {
@@ -53,6 +53,12 @@ app.factory('authService',
             isAdmin : function() {
                 var currentUser = this.getCurrentUser();
                 return (currentUser != undefined) && (currentUser.isAdmin);
+            },
+
+            inUserAds : function() {
+                var currentPath = $location.path();
+                var currentUser = this.getCurrentUser();
+                return (currentUser != undefined) && (currentPath == '/user/ads');
             },
 
             getAuthHeaders : function() {
